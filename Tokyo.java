@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class TokyoMap {
+public class Tokyo{
     private String[] siteCode = {"A", "B", "C", "D", "E", "F", "G"};
     private String[] siteName = {"Shibuya Crossing","Meiji Shrine","Tokyo Tower","Akihabara","Senso-Ji Temple","Ueno Park","Tokyo Skytree"};
     private int[] x = {3, 4, 5, 8, 9, 6, 11};
@@ -24,6 +24,7 @@ public class TokyoMap {
 		}
 
 		private void menu(){
+			int choice = 0;
 			do{
 					System.out.println("1. Search");
 					System.out.println("2. Insert");
@@ -31,16 +32,18 @@ public class TokyoMap {
 					System.out.println("4. Closest");
 					System.out.println("0. Exit");
 					System.out.print("Enter a choice: ");
-					int choice = sc.nextInt();
+				 	choice = sc.nextInt();
 				switch(choice){
 					case 1 -> doSearch();
-					case 2 -> insert();
-					case 3 -> allCons();
-					case 4 -> closest();
+					case 2 -> doInsert();
+					case 3 -> doAllCons();
+					case 4 -> doClosest();
 				}
 			}while(choice != 0);
 		}//end menu()
     
+		//-------------------------------------------------------------------------------------------------//
+
 		private void doSearch(){
 			System.out.println("Enter search index: ");
 			String searchIndex = sc.nextLine();
@@ -57,7 +60,16 @@ public class TokyoMap {
         System.out.println("Site not found");
         return -1;
     }
-    
+		//-------------------------------------------------------------------------------------------------//
+    private void doInsert(){
+			System.out.print("Enter x: ");
+			int i = sc.nextInt();
+			System.out.print("Enter y: ");
+			int j = sc.nextInt();
+			System.out.print("Enter Distance: ");
+			int distance = sc.nextInt();
+			insert(i, j, distance);
+		}
     private void insert(int i, int j, int distance) {
         if (i >= 0 && i < 7 && j >= 0 && j < 7) {
             dist[i][j] = distance;
@@ -65,7 +77,13 @@ public class TokyoMap {
             System.out.println("Connection added " + distance + "KM");
         }
     }
+		//-------------------------------------------------------------------------------------------------//
     
+		private void doAllCons(){
+				System.out.print("Enter x: ");
+				int x = sc.nextInt();
+				allCons(x);
+		}
     private void allCons(int i) {
         if (i >= 0 && i < 7) {
             System.out.println("Connections from " + siteName[i] + " ");
@@ -76,6 +94,12 @@ public class TokyoMap {
             }
         }
     }
+		//-------------------------------------------------------------------------------------------------//
+		private void doClosest(){
+			System.out.print("Enter x: ");
+			int x = sc.nextInt();
+			closest(x);
+		}
     private int closest(int i) {
         if (i >= 0 && i < 7) {
             int minDistance = 999;
