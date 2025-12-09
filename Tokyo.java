@@ -40,7 +40,7 @@ public class TokyoMap {
         return -1;
     }
     
-    private void Insert(int i, int j, int distance) {
+    private void insert(int i, int j, int distance) {
         if (i >= 0 && i < 7 && j >= 0 && j < 7) {
             dist[i][j] = distance;
             dist[j][i] = distance;
@@ -48,7 +48,7 @@ public class TokyoMap {
         }
     }
     
-    private void AllCons(int i) {
+    private void allCons(int i) {
         if (i >= 0 && i < 7) {
             System.out.println("Connections from " + siteName[i] + " ");
             for (int j = 0; j < 7; j++) {
@@ -58,7 +58,7 @@ public class TokyoMap {
             }
         }
     }
-    private int Closest(int i) {
+    private int closest(int i) {
         if (i >= 0 && i < 7) {
             int minDistance = 999;
             int closestIndex = -1;
