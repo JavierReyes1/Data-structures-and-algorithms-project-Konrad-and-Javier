@@ -1,3 +1,51 @@
+/*
+ * Author(s): Javier Reyes & Konrad Skoczylas
+ *
+ * Submission Date: 09/December/2025
+ * 
+ * Purpose: Create an executable program that manages and query a simple map of seven tourist
+ * sites in Tokyo. It models the sites and the distances between some of them using arrays and
+ * an adjacency matrix.
+ *
+ * Methods:
+ * Search: search for a site by its code or name to return its details and coordinates
+ * Insert: inserts or updates the distance between two sites
+ * All Connections(allCons): Display direct neighbors from a specefied site along with the distances
+ * Closest: find the closest directly connected site to a specified site
+ * 
+ * Component	 -----------------------> Description
+ * Class Tokyo	----------------------> The main class that encapsulates the data and methods for the tokyo site
+ * 
+ * siteCode[]   ----------------------> An Array of String site codes(i.e "A", "B", "C").
+ * 
+ * siteName[]		---------------------->	An array of String site names(i.e "Shibuya Crossing", "Meiji Shrine")
+ * 
+ * x[] , y[] 		---------------------->	Arrays of int representing the (x,y) coordinates of each site.
+ * 
+ * dist[][]			---------------------->	A 7×7 integer array (adjacency matrix) storing the distance between sites.
+ * 																			A value greater than 0 indicates a direct connection and the
+ * 																			distance (in KM). A value of 0 indicates no direct connection is defined
+ * 																			.It is symmetrical (dist[i][j] == dist[j][i]).
+ * initMap()	 -----------------------> Initializes the dist array with the predefined direct
+ * 																			connections and distances between the 7 sites.
+ * 
+ * menu()		 	----------------------->  Displays the interactive main menu and handles user
+ * 																			input for selecting program functionality.
+ * 
+ * search(String searchIndex) -------->	Searches for a site by its code or name and prints its 
+ * 																			code, name, and coordinates. Returns the array index of the
+ * 																			site if found, otherwise returns -1.
+ * 
+ * insert(int i, int j, int distance)-->Sets the distance between the site at index i and the site at index j 
+ * 																			to distance in the dist matrix (bidirectional).
+ * 
+ * allCons(int i)	--------------------> Prints a list of all sites directly connected to the site at 
+ *																			index i and the distance to each.
+ * 
+ * closest(int i)	--------------------> Finds and prints the name and distance of the closest site that is
+ * 																			directly connected to the site at index i.
+ * 
+ * */
 import java.util.Scanner;
 public class Tokyo{
     private String[] siteCode = {"A", "B", "C", "D", "E", "F", "G"};
