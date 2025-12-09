@@ -12,7 +12,7 @@ public class Tokyo{
 			initMap();
 		}
 
-    public void initMap() {
+    private void initMap() {
         dist[0][1] = 4; dist[1][0] = 4;
         dist[1][2] = 3; dist[2][1] = 3;
         dist[0][5] = 2; dist[5][0] = 2;
@@ -44,6 +44,8 @@ public class Tokyo{
 					case 2 -> doInsert();
 					case 3 -> doAllCons();
 					case 4 -> doClosest();
+					case 0 -> System.out.println("Exit the program");
+					default -> System.out.println("Enter a valid choice");
 				}
 			}while(choice != 0);
 		}//end menu()
