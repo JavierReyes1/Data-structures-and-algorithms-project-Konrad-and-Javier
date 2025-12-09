@@ -1,11 +1,13 @@
+import java.util.Scanner;
 public class TokyoMap {
     private String[] siteCode = {"A", "B", "C", "D", "E", "F", "G"};
     private String[] siteName = {"Shibuya Crossing","Meiji Shrine","Tokyo Tower","Akihabara","Senso-Ji Temple","Ueno Park","Tokyo Skytree"};
     private int[] x = {3, 4, 5, 8, 9, 6, 11};
     private int[] y = {7, 1, 3, 8, 7, 2, 2};
+		static Scanner sc = new Scanner(System.in);
     
     private int[][] dist = new int[7][7];
-    public void Map() {
+    public void initMap() {
         dist[0][1] = 4; dist[1][0] = 4;
         dist[1][2] = 3; dist[2][1] = 3;
         dist[0][5] = 2; dist[5][0] = 2;
@@ -16,18 +18,34 @@ public class TokyoMap {
         dist[3][6] = 4; dist[6][3] = 4;
     }
 
+		public void start(){
+			initMap();
+			menu();
+		}
+
 		private void menu(){
-			int choice = sc.nextInt();
 			do{
+					System.out.println("1. Search");
+					System.out.println("2. Insert");
+					System.out.println("3. All Conections");
+					System.out.println("4. Closest");
+					System.out.println("0. Exit");
+					System.out.print("Enter a choice: ");
+					int choice = sc.nextInt();
 				switch(choice){
-					case 1 -> search();
+					case 1 -> doSearch();
 					case 2 -> insert();
 					case 3 -> allCons();
 					case 4 -> closest();
 				}
-			}while(choice != 0)
-		}
+			}while(choice != 0);
+		}//end menu()
     
+		private void doSearch(){
+			System.out.println("Enter search index: ");
+			String searchIndex = sc.nextLine();
+			search(searchIndex);
+		}
     private int search(String searchIndex) {
         for (int i = 0; i < 7; i++) {
             if (siteCode[i].equals(searchIndex) || siteName[i].equals(searchIndex)) {
@@ -75,5 +93,5 @@ public class TokyoMap {
         }
         return -1;
     }
-    
+}//end class
     
